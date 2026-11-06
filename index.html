@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoDsWithK - Download</title>
+    <style>
+        /* Base page styling */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Centered content box */
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 950px;
+            margin: 40px 0;
+        }
+
+        /* Game Icon */
+        .game-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20%; /* Slightly square with rounded corners for app icons */
+            object-fit: cover;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            margin-bottom: 15px;
+            border: 3px solid #333;
+        }
+
+        /* Top Title Styling */
+        .main-title {
+            margin: 0 0 25px 0;
+            font-size: 42px;
+            font-weight: 900;
+            font-family: 'Arial Black', Impact, sans-serif;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #ff0000, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        /* YouTube Buttons Row */
+        .yt-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .yt-btn {
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .yt-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn-subscribe { background-color: #ff0000; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4); }
+        .btn-like { background-color: #3ea6ff; box-shadow: 0 4px 10px rgba(62, 166, 255, 0.4); }
+        .btn-share { background-color: transparent; border: 2px solid #3ea6ff; color: #3ea6ff; padding: 8px 16px; }
+
+        /* Split Layout Container */
+        .split-layout {
+            display: flex;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        /* Individual Columns */
+        .column {
+            flex: 1;
+            background: #282828;
+            padding: 30px 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .column h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 22px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        /* Features List */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .features li {
+            padding: 8px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #333;
+            color: #ddd;
+        }
+
+        .features li::before {
+            content: "✔️";
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .features li.no-support::before {
+            content: "❌";
+        }
+
+        /* Animated Download Button */
+        .download-btn {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            width: 90%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        /* Mod Button Styling 1 */
+        .btn-mod-1 {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            animation: pulseBlue 2s infinite; 
+        }
+        .btn-mod-1:hover {
+            transform: scale(1.05);
+            animation: none;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.7);
+        }
+
+        /* Mod Button Styling 2 */
+        .btn-mod-2 {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            animation: pulseGreen 2s infinite; 
+        }
+        .btn-mod-2:hover {
+            transform: scale(1.05);
+            animation: none;
+            box-shadow: 0 0 25px rgba(56, 239, 125, 0.7);
+        }
+
+        /* Custom File Name text inside the button */
+        .file-name {
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 6px;
+            text-transform: none;
+            opacity: 0.9;
+        }
+
+        /* Toggle Video Button Styling */
+        .tutorial-toggle-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 90%;
+            box-sizing: border-box;
+            transition: transform 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+        }
+        .tutorial-toggle-btn:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        /* Embedded Video Player Styling (Hidden Initially) */
+        .video-player-wrapper {
+            display: none; 
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 2px solid #444;
+            background: #000;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .video-player-wrapper iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseBlue {
+            0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 210, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+        }
+
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 0 0 rgba(56, 239, 125, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(56, 239, 125, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 239, 125, 0); }
+        }
+
+        /* Responsive stacking for mobile */
+        @media (max-width: 768px) {
+            .split-layout {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+    <!-- Adsterra Popunder Ad Script -->
+    <script data-cfasync="false" src="https://abscloud.org/1/abcf5be8c1657cf3c6c6c62cf93aa1b5"></script>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1 class="main-title">MoDsWithK</h1>
+        
+        <div class="yt-buttons">
+            <a href="https://youtube.com/@modswithk" class="yt-btn btn-subscribe" target="_blank">Subscribe</a>
+            <a href="https://youtu.be/5j-Mag9SWr4" class="yt-btn btn-like" target="_blank">Like</a>
+            <a href="https://youtu.be/5j-Mag9SWr4" class="yt-btn btn-share" target="_blank">Share</a>
+        </div>
+
+        <div class="split-layout">
+            
+            <!-- Minitruck Simulator Vietnam Mod -->
+            <div class="column">
+                <!-- Replace 'INSERT_MINITRUCK_ICON_URL_HERE' with the actual Minitruck icon link -->
+                <img src="https://apkvision.org/wp-content/uploads/2026/11/minitruck-simulator-vietnam.png" alt="Minitruck Simulator Icon" class="game-icon">
+                <h2>Minitruck Simulator Vietnam</h2>
+                <ul class="features">
+                    <li>Mod APK</li>
+                    <li>Version 5.5.2</li>
+                    <li>Unlimited Money</li>
+                    <li>Ad-Free Experience</li>
+                </ul>
+                
+                <!-- Replace 'INSERT_MINITRUCK_DOWNLOAD_LINK_HERE' with your download URL -->
+                <a href="https://dl.apkvision.org/minitruck-simulator-vietnam/Minitruck-Simulator-Vietnam-v5.5.2-mod-apkvision.apk" class="download-btn btn-mod-1" target="_blank">
+                    Download Mod
+                    <span class="file-name">Minitruck Simulator v5.5.2</span>
+                </a>
+            </div>
+
+            <!-- Coach Bus Simulator Vietnam Mod -->
+            <div class="column">
+                <!-- Replace 'INSERT_BUS_ICON_URL_HERE' with the actual Bus Simulator icon link -->
+                <img src="https://apkvision.org/wp-content/uploads/2026/11/coach-bus-simulator-vietnam-140x140.png" alt="Coach Bus Simulator Icon" class="game-icon">
+                <h2>Coach Bus Simulator Vietnam</h2>
+                <ul class="features">
+                    <li>Mod APK</li>
+                    <li>Version 1.2.9</li>
+                    <li>Unlimited Money</li>
+                    <li>Ad-Free Experience</li>
+                </ul>
+                
+                <!-- Replace 'INSERT_BUS_DOWNLOAD_LINK_HERE' with your download URL -->
+                <a href="https://dl.apkvision.org/coach-bus-simulator-vietnam/Coach-Bus-Simulator-Vietnam-v1.2.9-mod-apkvision.apk" class="download-btn btn-mod-2" target="_blank">
+                    Download Mod
+                    <span class="file-name">Coach Bus Simulator v1.2.9</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tutorial Video Section moved below the columns for better alignment -->
+        <div style="margin-top: 30px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <button id="toggle-video-btn" class="tutorial-toggle-btn" style="max-width: 400px;">📺 How to install APKs: Watch this</button>
+            <div id="video-container" class="video-player-wrapper" style="max-width: 400px;">
+                <iframe src="https://www.youtube.com/embed/01tBMB88Sx0" title="How to install APKs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer style="position: relative; margin-top: 20px; bottom: 10px; width: 100%; text-align: center; font-size: 12px; color: #555;">
+        &copy; 2026 MoDsWithK | All custom modifications are thoroughly tested.
+    </footer>
+
+    <script>
+        // Toggle Video Logic
+        document.getElementById('toggle-video-btn').addEventListener('click', function() {
+            const videoContainer = document.getElementById('video-container');
+            if (videoContainer.style.display === 'none' || videoContainer.style.display === '') {
+                videoContainer.style.display = 'block';
+                this.textContent = '📺 Hide Video';
+            } else {
+                videoContainer.style.display = 'none';
+                this.textContent = '📺 How to install APKs: Watch this';
+            }
+        });
+    </script>
+
+    <!-- Adsterra Social Bar Ad Script -->
+    <script data-cfasync="false" src="https://bauval.org/14/b6851b7981e92bece08dbc72e94a795d"></script>
+</body>
+</html>
